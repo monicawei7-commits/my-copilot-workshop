@@ -1,0 +1,237 @@
+:root {
+    --page-bg: #f4f1eb;
+    --card-bg: #fffdf9;
+    --ink: #263238;
+    --muted: #788187;
+    --line: #e7e1d8;
+    --accent: #d85f45;
+    --accent-dark: #b94a34;
+    --completed: #a3aaa9;
+    --shadow: 0 20px 55px rgba(58, 48, 39, 0.12);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    margin: 0;
+    padding: 32px 16px;
+    display: grid;
+    place-items: center;
+    color: var(--ink);
+    background: var(--page-bg);
+    font-family: "PingFang TC", "Noto Sans TC", sans-serif;
+}
+
+.todo-card {
+    width: min(100%, 520px);
+    padding: clamp(24px, 6vw, 42px);
+    background: var(--card-bg);
+    border: 1px solid rgba(231, 225, 216, 0.8);
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+}
+
+.todo-header {
+    margin-bottom: 28px;
+}
+
+.eyebrow {
+    margin: 0 0 10px;
+    color: var(--accent);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+}
+
+h1 {
+    margin: 0;
+    font-family: Georgia, "Noto Serif TC", serif;
+    font-size: clamp(2rem, 7vw, 2.8rem);
+    line-height: 1.1;
+}
+
+.subtitle {
+    margin: 12px 0 0;
+    color: var(--muted);
+    font-size: 0.95rem;
+}
+
+.todo-form {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 22px;
+}
+
+.todo-form input {
+    min-width: 0;
+    flex: 1;
+    padding: 13px 15px;
+    color: var(--ink);
+    background: #faf8f4;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    font: inherit;
+    outline: none;
+    transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+
+.todo-form input:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(216, 95, 69, 0.14);
+}
+
+button {
+    border: 0;
+    border-radius: 10px;
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.todo-form button {
+    padding: 0 19px;
+    color: #fff;
+    background: var(--accent);
+    transition: background 160ms ease, transform 160ms ease;
+}
+
+.todo-form button:hover,
+.todo-form button:focus-visible {
+    background: var(--accent-dark);
+}
+
+.todo-form button:active {
+    transform: translateY(1px);
+}
+
+.todo-list {
+    display: grid;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.todo-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 10px 12px 13px;
+    border: 1px solid var(--line);
+    border-radius: 11px;
+    animation: appear 180ms ease-out;
+}
+
+.todo-item label {
+    min-width: 0;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+}
+
+.todo-item input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    margin: 0;
+    flex: 0 0 auto;
+    accent-color: var(--accent);
+    cursor: pointer;
+}
+
+.todo-text {
+    overflow-wrap: anywhere;
+    line-height: 1.45;
+}
+
+.todo-item.completed .todo-text {
+    color: var(--completed);
+    text-decoration: line-through;
+}
+
+.delete-button {
+    padding: 6px 8px;
+    color: var(--muted);
+    background: transparent;
+    font-size: 0.82rem;
+}
+
+.delete-button:hover,
+.delete-button:focus-visible {
+    color: var(--accent-dark);
+    background: #fff0eb;
+}
+
+.empty-state {
+    margin: 26px 0;
+    color: var(--muted);
+    text-align: center;
+    font-size: 0.95rem;
+}
+
+.todo-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 24px;
+    padding-top: 18px;
+    color: var(--muted);
+    border-top: 1px solid var(--line);
+    font-size: 0.88rem;
+}
+
+.clear-completed {
+    padding: 5px 0;
+    color: var(--muted);
+    background: transparent;
+    font-size: 0.82rem;
+    font-weight: 400;
+}
+
+.clear-completed:hover,
+.clear-completed:focus-visible {
+    color: var(--accent-dark);
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(-4px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 420px) {
+    body {
+        padding: 18px 12px;
+    }
+
+    .todo-form {
+        flex-direction: column;
+    }
+
+    .todo-form button {
+        min-height: 44px;
+    }
+}
