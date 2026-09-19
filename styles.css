@@ -7,7 +7,23 @@
     --accent: #d85f45;
     --accent-dark: #b94a34;
     --completed: #a3aaa9;
+    --input-bg: #faf8f4;
+    --delete-hover-bg: #fff0eb;
     --shadow: 0 20px 55px rgba(58, 48, 39, 0.12);
+}
+
+[data-theme="dark"] {
+    --page-bg: #1d2225;
+    --card-bg: #293034;
+    --ink: #f4f1eb;
+    --muted: #aeb8b8;
+    --line: #414c50;
+    --accent: #f18468;
+    --accent-dark: #ff9b80;
+    --completed: #7f8c8e;
+    --input-bg: #20272a;
+    --delete-hover-bg: #49322e;
+    --shadow: 0 20px 55px rgba(0, 0, 0, 0.3);
 }
 
 * {
@@ -38,6 +54,13 @@ body {
     margin-bottom: 28px;
 }
 
+.title-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+
 .eyebrow {
     margin: 0 0 10px;
     color: var(--accent);
@@ -51,6 +74,24 @@ h1 {
     font-family: Georgia, "Noto Serif TC", serif;
     font-size: clamp(2rem, 7vw, 2.8rem);
     line-height: 1.1;
+}
+
+.theme-toggle {
+    flex: 0 0 auto;
+    padding: 8px 10px;
+    color: var(--muted);
+    background: transparent;
+    border: 1px solid var(--line);
+    font-size: 0.78rem;
+    font-weight: 400;
+    transition: color 160ms ease, border-color 160ms ease, background 160ms ease;
+}
+
+.theme-toggle:hover,
+.theme-toggle:focus-visible {
+    color: var(--accent);
+    border-color: var(--accent);
+    background: var(--input-bg);
 }
 
 .subtitle {
@@ -70,7 +111,7 @@ h1 {
     flex: 1;
     padding: 13px 15px;
     color: var(--ink);
-    background: #faf8f4;
+    background: var(--input-bg);
     border: 1px solid var(--line);
     border-radius: 10px;
     font: inherit;
@@ -105,6 +146,34 @@ button {
 
 .todo-form button:active {
     transform: translateY(1px);
+}
+
+.filter-bar {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 18px;
+}
+
+.filter-button {
+    padding: 8px 13px;
+    color: var(--muted);
+    background: transparent;
+    border: 1px solid transparent;
+    font-size: 0.84rem;
+    font-weight: 400;
+}
+
+.filter-button:hover,
+.filter-button:focus-visible {
+    color: var(--accent);
+    border-color: var(--line);
+}
+
+.filter-button.active {
+    color: var(--accent-dark);
+    background: var(--input-bg);
+    border-color: var(--accent);
+    font-weight: 700;
 }
 
 .todo-list {
@@ -163,7 +232,7 @@ button {
 .delete-button:hover,
 .delete-button:focus-visible {
     color: var(--accent-dark);
-    background: #fff0eb;
+    background: var(--delete-hover-bg);
 }
 
 .empty-state {
@@ -233,5 +302,14 @@ button {
 
     .todo-form button {
         min-height: 44px;
+    }
+
+    .title-row {
+        align-items: flex-start;
+    }
+
+    .theme-toggle {
+        max-width: 130px;
+        text-align: left;
     }
 }
