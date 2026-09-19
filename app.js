@@ -125,6 +125,11 @@ form.addEventListener("submit", (event) => {
 });
 
 clearCompletedButton.addEventListener("click", () => {
+    const confirmed = window.confirm("確定要清除所有已完成的待辦事項嗎？此操作無法復原。");
+    if (!confirmed) {
+        return;
+    }
+
     todos = todos.filter((todo) => !todo.completed);
     saveTodos();
     renderTodos();
