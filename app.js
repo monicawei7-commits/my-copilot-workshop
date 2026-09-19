@@ -94,7 +94,7 @@ function renderTodos() {
     remainingCount.textContent = `未完成:${remaining} 項`;
     if (visibleTodos.length === 0) {
         emptyState.textContent = currentFilter === "completed"
-            ? "目前還沒有已完成的待辦事項。"
+            ? "目前沒有已完成的事項,其他待辦仍在清單中。"
             : currentFilter === "active"
                 ? "太棒了,目前沒有未完成的待辦事項!"
                 : "還沒有任何待辦事項,新增一個吧!";
